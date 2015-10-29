@@ -1,0 +1,4 @@
+---
+# defaults file for ansible-get-vpc-facts
+aws_region: "us-east-1" 
+vpc_tag_name: "insert-client-vpc-tag"
