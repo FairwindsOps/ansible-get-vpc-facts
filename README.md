@@ -6,7 +6,7 @@ Ansible role to set facts about a VPC.
 Requirements
 ------------
 
-* Ansible >= 2.0*. The edge, it bleeds. So much so that you'lll need to revert to 1.9.x for `ansible-galaxy install` to work.
+* **Ansible >= 2.0**. The edge, it bleeds. So much so that you'lll need to revert to 1.9.x for `ansible-galaxy install` to work.
 * Note: Omnia will need to enforce AWS resource metadata strings such as security group names such that they conform to Ansible attribute names.  To avoid this issue, `tasks/security-groups.yml` replaces dashes (`-`) with underscores. Otherwise:
 
 ```
