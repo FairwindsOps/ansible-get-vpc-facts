@@ -6,7 +6,13 @@ Ansible role to set facts about a VPC.
 Requirements
 ------------
 
-*Ansible >= 2.0*. The edge, it bleeds. So much so that you'lll need to revert to 1.9.x for `ansible-galaxy install` to work.
+* Ansible >= 2.0*. The edge, it bleeds. So much so that you'lll need to revert to 1.9.x for `ansible-galaxy install` to work.
+* Note: Omnia will need to enforce AWS resource metadata strings such as security group names such that they conform to Ansible attribute names.  To avoid this issue, `tasks/security-groups.yml` replaces dashes (`-`) with underscores. Otherwise:
+
+```
+..."The variable name 'reactr-working_web' is not valid. Variables must start with a letter or underscore character, and contain only letters, numbers and underscores."...
+```
+
 
 Role Variables
 --------------
@@ -26,14 +32,18 @@ As a result, various facts are then set. Among them:
 {{aws_vpc_id}}
 ```
 
-* Subnet ids by name:
+* Subnet IDs by name:
 
 ```
 {{administration_primary}}
 {{private_working_primary}}
 ```
 
-* (soon) Security group IDs 
+* Security group IDs :
+
+```
+{{stg_presentation}}
+```
 
 Example Playbook
 ----------------
