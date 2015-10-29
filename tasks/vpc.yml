@@ -16,10 +16,4 @@
     aws_vpc_id: "{{ set_vpc_json.Vpcs[0].VpcId }}"
     when: vpc_info_json.Vpcs[0].VpcId is defined
 
-- debug: msg={{aws_vpc_id}}
-
-
-
-
-
-
+# - debug: msg={{aws_vpc_id}}

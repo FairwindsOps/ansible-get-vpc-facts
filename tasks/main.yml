@@ -1,5 +1,14 @@
 ---
 
+# Slightly verbose as is. There doesn't seem to be a way to be less verbose.
+# Relevant: http://grokbase.com/t/gg/ansible-project/14b7b2t2nf/suppress-output-of-task
+# Also: Ability to hide tasks from output (https://github.com/ansible/ansible/issues/3324)
+
 - include: vpc.yml
+  no_log: True
+  
 - include: subnets.yml
+  no_log: True
+
 - include: security-groups.yml
+  no_log: True
