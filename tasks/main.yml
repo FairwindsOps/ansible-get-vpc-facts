@@ -1,2 +1,5 @@
 ---
-# tasks file for ansible-get-vpc-facts
+
+- include: vpc.yml
+- include: subnets.yml
+- include: security-groups.yml

@@ -1,0 +1,30 @@
+---
+
+
+
+  - name: get SG list
+    command: "aws ec2 describe-security-groups --filter Name=vpc-id,Values={{aws_vpc_id}}"
+    register: get_sg_list
+    changed_when: false
+
+  - name: set sg info
+    set_fact: 
+      set_sg_json: "{{ get_sg_list.stdout | from_json }}"
+    changed_when: false
+
+  - debug: msg={{set_sg_json}}
+
+# - name: Set sg facts
+#   set_fact:
+#    "{{item.Tags.Name}}": "{{item.GroupId}}"
+#   with_items: set_sg_json.SecurityGroups
+
+# - name: set VPC var
+#   set_fact:
+#     aws_vpc_id: "{{ set_vpc_json.Vpcs[0].VpcId }}"
+#     when: vpc_info_json.Vpcs[0].VpcId is defined
+
+# - debug: msg={{stackstorm}}
+
+
+

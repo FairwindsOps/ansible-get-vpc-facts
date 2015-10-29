@@ -1,0 +1,25 @@
+---
+# Based on https://www.reddit.com/r/ansible/comments/3fiz2k/gathering_aws_data/
+
+- name: get VPC info
+  command: "aws ec2 describe-vpcs --region {{ aws_region }} --filter Name=tag:Name,Values={{vpc_tag_name}}"
+  register: get_vpc_id
+  changed_when: false
+
+- name: set VPC info
+  set_fact: 
+    set_vpc_json: "{{ get_vpc_id.stdout | from_json }}"
+  changed_when: false
+
+- name: set VPC var
+  set_fact:
+    aws_vpc_id: "{{ set_vpc_json.Vpcs[0].VpcId }}"
+    when: vpc_info_json.Vpcs[0].VpcId is defined
+
+- debug: msg={{aws_vpc_id}}
+
+
+
+
+
+

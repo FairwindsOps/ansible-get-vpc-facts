@@ -6,7 +6,7 @@ Ansible role to set facts about a VPC.
 Requirements
 ------------
 
-Ansible >= 2.0
+*Ansible >= 2.0*. The edge, it bleeds. So much so that you'lll need to revert to 1.9.x for `ansible-galaxy install` to work.
 
 Example Playbook
 ----------------

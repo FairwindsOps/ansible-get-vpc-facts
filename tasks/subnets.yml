@@ -1,0 +1,18 @@
+---
+
+- ec2_vpc_subnet_facts:
+    filters:
+      vpc-id: "{{aws_vpc_id}}"
+  register: subnet_facts
+
+- name: Set subnet facts
+  set_fact:
+   "{{item.tags.Name}}": "{{item.id}}"
+  with_items: subnet_facts.subnets
+
+# - debug: msg={{administration_primary}}
+# - debug: msg={{private_working_primary}}
+
+
+
+
