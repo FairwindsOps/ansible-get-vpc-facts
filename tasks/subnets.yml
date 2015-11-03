@@ -5,7 +5,7 @@
       vpc-id: "{{aws_vpc_id}}"
   register: subnet_facts
 
-- name: Set subnet facts
+- name: set subnet facts
   set_fact:
    "{{item.tags.Name}}": "{{item.id}}"
   with_items: subnet_facts.subnets
