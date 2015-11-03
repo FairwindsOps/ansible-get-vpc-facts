@@ -1,6 +1,6 @@
 ---
 
-- name: get SG list
+- name: get sg list
   command: "aws ec2 describe-security-groups --filter Name=vpc-id,Values={{aws_vpc_id}}"
   register: get_sg_list
   changed_when: false
@@ -10,7 +10,7 @@
     set_sg_json: "{{ get_sg_list.stdout | from_json }}"
   changed_when: false
 
-- name: Set sg facts
+- name: set sg facts
   set_fact:
    "{{item.GroupName | replace('-' , '_')  }}": "{{item.GroupId}}"
   with_items: set_sg_json.SecurityGroups
