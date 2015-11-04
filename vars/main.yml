@@ -1,4 +1,2 @@
 ---
 # vars file for ansible-get-vpc-facts
-
-# vpc_tag_name: "insert-client-vpc-tag"
