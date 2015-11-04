@@ -6,7 +6,15 @@ Ansible role to set facts about a VPC.
 Requirements
 ------------
 
-* **Ansible >= 2.0**. The edge, it bleeds. So much so that you'lll need to revert to 1.9.x for `ansible-galaxy install` to work.
+* **Ansible >= 2.0**. The edge, it bleeds. Place this in ansible-requirements.yml 
+
+```
+- src: git+ssh://git@github.com/reactiveops/ansible-get-vpc-facts
+  name: reactiveops.get-vpc-facts
+  path: roles
+  scm: git
+```
+
 * Note: Omnia will need to enforce AWS resource metadata strings such as security group names such that they conform to Ansible attribute names.  To avoid this issue, `tasks/security-groups.yml` replaces dashes (`-`) with underscores. Otherwise:
 
 ```
@@ -17,11 +25,10 @@ Requirements
 Role Variables
 --------------
 
-These variables need to be set. In Omnia, in `default/account.yml`:
+These variables need to be set. In Omnia, in `default/account/vars.yml`:
 
 ```
 vpc_tag_name: 'reactr-vpc'
-aws_region: 'us-east-1'
 ```
 
 As a result, various facts are then set. Among them:
@@ -30,19 +37,27 @@ As a result, various facts are then set. Among them:
 
 ```
 {{aws_vpc_id}}
+{{aws_vpc_cidr}}
 ```
 
 * Subnet IDs by name:
 
 ```
-{{administration_primary}}
-{{private_working_primary}}
+{{public_az1}}
+{{private_prod_az1}}
+{{private_working_az1}}
+...
 ```
 
 * Security group IDs :
 
 ```
-{{stg_presentation}}
+{{dev_presentation}}
+{{prod_presentation}}
+{{dev_application}}
+{{prod_application}}
+{{dev_data}}
+{{prod_data}}
 ```
 
 Example Playbook
@@ -66,7 +81,7 @@ Example Playbook
 # Include the role in a pre_task
 ###
   roles:
-    - get_facts
+    - reactiveops.get-vpc-facts
 
 ###
 # {{ aws_vpc_id }} is now set:
