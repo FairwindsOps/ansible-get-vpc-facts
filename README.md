@@ -10,8 +10,8 @@ Requirements
 
 ```
 - src: git+ssh://git@github.com/reactiveops/ansible-get-vpc-facts
-  name: reactiveops.get-vpc-facts
-  path: roles
+  name: reactiveops.get-vpc-facts-master
+  path: ~/.omnia/roles
   scm: git
 ```
 
