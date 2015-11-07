@@ -1,0 +1,32 @@
+---
+
+- name: get zone list
+  command: "aws route53 list-hosted-zones"
+  register: zone_list
+  changed_when: false
+
+- name: set zone_json
+  set_fact:
+    zone_json: "{{ zone_list.stdout | from_json }}"
+  changed_when: false
+
+# the raw Id is of the form:
+# "Id": "/hostedzone/Z3QTPT4QJU69YU"
+- name: set canonical_zone_id
+  set_fact:
+    canonical_zone_id: "{{item.Id | replace('/hostedzone/' , '') }}"
+  when: item.Name  == "{{canonical_zone}}"
+  with_items: zone_json.HostedZones
+
+# - debug: msg="{{canonical_zone_id}}"
+
+# item.Name is of the form:
+# "Name": "reactiveops.io."
+# The '.' get converted to '_', and the final '_' is stripped
+# http://docs.ansible.com/ansible/playbooks_filters.html#other-useful-filters
+- name: set fact for all zones
+  set_fact:
+   "zone_{{item.Name | replace('.' , '_') |regex_replace('^(.*)_$', '\\1') }}": "{{item.Id | replace('/hostedzone/' , '') }}"
+  with_items: zone_json.HostedZones
+
+# s- debug: msg="{{zone_reactiveops_local}}"

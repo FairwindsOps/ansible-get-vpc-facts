@@ -12,3 +12,6 @@
 
 - include: security-groups.yml
   no_log: True
+
+- include: zones.yml
+  no_log: True
