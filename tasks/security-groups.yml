@@ -1,7 +1,7 @@
 ---
 
 - name: get sg list
-  command: "aws ec2 describe-security-groups --filter Name=vpc-id,Values={{aws_vpc_id}}"
+  command: "aws ec2 describe-security-groups --region={{aws_region}} --filter Name=vpc-id,Values={{aws_vpc_id}}"
   register: get_sg_list
   changed_when: false
 
