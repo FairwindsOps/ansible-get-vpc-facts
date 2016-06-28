@@ -1,0 +1,22 @@
+machine:
+  services:
+    - docker
+  ruby:
+    version: 2.3.0
+
+dependencies:
+  override:
+    - sudo pip install ansible
+    - bundle install:
+        timeout: 240
+        pwd:
+          tests
+    - make build:
+        pwd:
+          tests
+
+test:
+  override:
+    - make test:
+        pwd:
+          tests
