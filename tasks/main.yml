@@ -6,7 +6,7 @@
 
 - include: vpc.yml
   no_log: True
-  
+
 - include: subnets.yml
   no_log: True
 

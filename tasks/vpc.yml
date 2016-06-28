@@ -7,7 +7,7 @@
   changed_when: false
 
 - name: set vpc info
-  set_fact: 
+  set_fact:
     set_vpc_json: "{{ get_vpc_id.stdout | from_json }}"
   changed_when: false
 

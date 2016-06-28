@@ -13,6 +13,6 @@
 - name: set sg facts
   set_fact:
    "{{item.GroupName | replace('-' , '_')  }}": "{{item.GroupId}}"
-  with_items: set_sg_json.SecurityGroups
+  with_items: "{{set_sg_json.SecurityGroups}}"
 
 # - debug: msg={{stg_presentation}}
