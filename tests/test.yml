@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  remote_user: root
+  vars:
+    # Testing license key, allows agent to start cleanly
+    vpc_tag_name: 'foo-bar'
+    aws_region: 'us-east-1'
+  roles:
+    - role_under_test
