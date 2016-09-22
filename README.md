@@ -6,7 +6,7 @@ Ansible role to set facts about a VPC.
 Requirements
 ------------
 
-* **Ansible >= 2.0**. The edge, it bleeds. Place this in ansible-requirements.yml 
+* **Ansible >= 2.0**. The edge, it bleeds. Place this in ansible-requirements.yml
 
 ```
 - src: git+ssh://git@github.com/reactiveops/ansible-get-vpc-facts
@@ -15,7 +15,8 @@ Requirements
   scm: git
 ```
 
-* Note: Omnia will need to enforce AWS resource metadata strings such as security group names such that they conform to Ansible attribute names.  To avoid this issue, `tasks/security-groups.yml` replaces dashes (`-`) with underscores. Otherwise:
+* Note: Ansible requires that variables contain only letters, numbers and underscores. Because of this, `-` and `.` are converted to `_` in subnets or security groups names.
+
 
 ```
 ..."The variable name 'reactr-working_web' is not valid. Variables must start with a letter or underscore character, and contain only letters, numbers and underscores."...
@@ -62,7 +63,7 @@ As a result, various facts are then set. Among them:
 
 Example Playbook
 ----------------
-* In order to create a security group, you'll need the VPC ID. By including this role, you'll have access to it. 
+* In order to create a security group, you'll need the VPC ID. By including this role, you'll have access to it.
 
 ```
 - name: Security Groups
