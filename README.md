@@ -92,7 +92,7 @@ Example Playbook
 
     - name: Ensure bastion sg
       ec2_group:
-        state: present        
+        state: present
         name: "{{sg_bastion}}"
         description: "{{sg_bastion}}"
         vpc_id: "{{ aws_vpc_id }}"
