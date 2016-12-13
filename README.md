@@ -15,7 +15,7 @@ Requirements
   scm: git
 ```
 
-* Note: Ansible requires that variables contain only letters, numbers and underscores. Because of this, `-` and `.` are converted to `_` in subnets or security groups names.
+* Note: Ansible requires that variables contain only letters, numbers and underscores. Because of this, `-`, `.`, and ` ` are converted to `_` in subnets and security groups names.
 
 
 ```
