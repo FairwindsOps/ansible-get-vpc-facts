@@ -9,7 +9,7 @@
 
 - name: set subnet facts
   set_fact:
-   "{{item.tags.Name | replace('.', '_') | replace('-', '_') | replace(' ', '_') }} | replace('(', '_') | replace(')', '_') | replace('/', '_') }}": "{{item.id}}"
+   "{{item.tags.Name | replace('.', '_') | replace('-', '_') | replace(' ', '_') | replace('(', '_') | replace(')', '_') | replace('/', '_') }}": "{{item.id}}"
   with_items: "{{subnet_facts.subnets}}"
 
 # - debug: msg={{administration_primary}}
