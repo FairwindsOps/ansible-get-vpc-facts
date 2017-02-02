@@ -8,7 +8,7 @@
   no_log: True
 
 - include: subnets.yml
-  no_log: True
+  no_log: False
 
 - include: security-groups.yml
   no_log: True
