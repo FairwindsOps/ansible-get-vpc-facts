@@ -9,8 +9,8 @@ Requirements
 * **Ansible >= 2.0**. The edge, it bleeds. Place this in ansible-requirements.yml
 
 ```
-- src: git+ssh://git@github.com/reactiveops/ansible-get-vpc-facts
-  name: reactiveops.get-vpc-facts-master
+- src: git+ssh://git@github.com/FairwindsOps/ansible-get-vpc-facts
+  name: fairwinds.get-vpc-facts-master
   path: ~/.omnia/roles
   scm: git
 ```
@@ -82,7 +82,7 @@ Example Playbook
 # Include the role in a pre_task
 ###
   roles:
-    - reactiveops.get-vpc-facts
+    - fairwinds.get-vpc-facts
 
 ###
 # {{ aws_vpc_id }} is now set:
@@ -110,4 +110,4 @@ TBD
 Author Information
 ------------------
 
-ReactiveOps
+Fairwinds
